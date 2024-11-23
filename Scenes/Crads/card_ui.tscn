@@ -1,7 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://c0sopxmvr6s6c"]
+[gd_scene load_steps=9 format=3 uid="uid://c0sopxmvr6s6c"]
 
 [ext_resource type="Theme" uid="uid://cuej7rydnr6f" path="res://Resources/themeUI.tres" id="1_e3rld"]
 [ext_resource type="Script" path="res://Scripts/Card/card_ui.gd" id="1_nr0eh"]
+[ext_resource type="Script" path="res://Scripts/Card/card_state_machine.gd" id="3_ktrjp"]
+[ext_resource type="Script" path="res://Scripts/Card/States/card_base_state.gd" id="4_383td"]
+[ext_resource type="Script" path="res://Scripts/Card/States/card_clicked_state.gd" id="5_p3tvo"]
+[ext_resource type="Script" path="res://Scripts/Card/States/card_dragging_state.gd" id="6_w3cax"]
+[ext_resource type="Script" path="res://Scripts/Card/States/card_released_state.gd" id="7_f87fs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mssbd"]
 size = Vector2(128, 192)
@@ -25,6 +30,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0.9, 0.144, 0.144, 1)
 
 [node name="State" type="Label" parent="."]
@@ -51,3 +57,28 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DropPointDetector"]
 position = Vector2(64, 96)
 shape = SubResource("RectangleShape2D_mssbd")
+
+[node name="CardStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_ktrjp")
+initial_state = NodePath("CardBaseState")
+
+[node name="CardBaseState" type="Node" parent="CardStateMachine"]
+script = ExtResource("4_383td")
+
+[node name="CardClickedState" type="Node" parent="CardStateMachine"]
+script = ExtResource("5_p3tvo")
+state = 1
+
+[node name="CardDraggingState" type="Node" parent="CardStateMachine"]
+script = ExtResource("6_w3cax")
+state = 2
+
+[node name="CardReleasedState" type="Node" parent="CardStateMachine"]
+script = ExtResource("7_f87fs")
+state = 4
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="area_entered" from="DropPointDetector" to="." method="_on_drop_point_detector_area_entered"]
+[connection signal="area_exited" from="DropPointDetector" to="." method="_on_drop_point_detector_area_exited"]
