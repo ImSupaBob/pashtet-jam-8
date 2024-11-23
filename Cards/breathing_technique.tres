@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Card" load_steps=2 format=3 uid="uid://cp0e4hgj0dwxj"]
+
+[ext_resource type="Script" path="res://Resources/card.gd" id="1_sux2r"]
+
+[resource]
+script = ExtResource("1_sux2r")
+id = "breathing_technique"
+type = 1
+target = 0
+cost = 1

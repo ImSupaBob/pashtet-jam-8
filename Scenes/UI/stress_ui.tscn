@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://dy5xqk0cctx08"]
+
+[ext_resource type="Texture2D" uid="uid://c1kxxex56orob" path="res://Assets/UI/Stress.png" id="1_1l3yh"]
+[ext_resource type="Script" path="res://Scripts/UI/stress_ui.gd" id="1_756oq"]
+[ext_resource type="Theme" uid="uid://cuej7rydnr6f" path="res://Resources/themeUI.tres" id="2_lgdol"]
+[ext_resource type="StyleBox" uid="uid://dbsfaq4q3y2om" path="res://Resources/stress_progress_bar.tres" id="3_lfsbt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3g0fx"]
+
+[node name="StressUI" type="HBoxContainer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -224.0
+offset_right = 224.0
+offset_bottom = 64.0
+grow_horizontal = 2
+script = ExtResource("1_756oq")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_1l3yh")
+stretch_mode = 2
+
+[node name="TextureRect2" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(380, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("2_lgdol")
+color = Color(0.0177324, 0.0177324, 0.0177324, 1)
+
+[node name="StressProgressBar" type="ProgressBar" parent="TextureRect2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(380, 32)
+layout_mode = 1
+offset_right = 380.0
+offset_bottom = 32.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("2_lgdol")
+theme_override_styles/background = SubResource("StyleBoxEmpty_3g0fx")
+theme_override_styles/fill = ExtResource("3_lfsbt")
+min_value = -60.0
+max_value = 60.0
+show_percentage = false

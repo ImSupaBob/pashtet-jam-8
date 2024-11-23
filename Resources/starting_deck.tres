@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CardPile" load_steps=5 format=3 uid="uid://cffvygfoylusa"]
+
+[ext_resource type="Script" path="res://Resources/card.gd" id="1_5bjmn"]
+[ext_resource type="Resource" uid="uid://bvuq3fhss7y1j" path="res://Cards/positive_thinking.tres" id="2_3hwo6"]
+[ext_resource type="Script" path="res://Resources/card_pile.gd" id="2_6ry7t"]
+[ext_resource type="Resource" uid="uid://cp0e4hgj0dwxj" path="res://Cards/breathing_technique.tres" id="3_sc40h"]
+
+[resource]
+script = ExtResource("2_6ry7t")
+cards = Array[ExtResource("1_5bjmn")]([ExtResource("2_3hwo6"), ExtResource("2_3hwo6"), ExtResource("2_3hwo6"), ExtResource("2_3hwo6"), ExtResource("2_3hwo6"), ExtResource("3_sc40h"), ExtResource("3_sc40h"), ExtResource("3_sc40h"), ExtResource("3_sc40h"), ExtResource("3_sc40h")])

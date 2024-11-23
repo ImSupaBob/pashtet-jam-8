@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://fqcevt8o5esv"]
+
+[ext_resource type="Script" path="res://Scripts/UI/stats_ui.gd" id="1_q3yk7"]
+[ext_resource type="Theme" uid="uid://cuej7rydnr6f" path="res://Resources/themeUI.tres" id="2_5t6es"]
+[ext_resource type="Texture2D" uid="uid://b0qty36y21vei" path="res://Assets/UI/Hearth.png" id="2_koxuj"]
+
+[node name="StatsUI" type="VBoxContainer"]
+offset_right = 116.0
+offset_bottom = 64.0
+script = ExtResource("1_q3yk7")
+
+[node name="Health" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Health"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_koxuj")
+stretch_mode = 2
+
+[node name="HealthLabel" type="Label" parent="Health"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("2_5t6es")
+theme_override_font_sizes/font_size = 32
+text = " 60  /  60"

@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dyehaj5387akj"]
+[gd_scene load_steps=6 format=3 uid="uid://dyehaj5387akj"]
 
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_ryttj"]
 [ext_resource type="PackedScene" uid="uid://c0sopxmvr6s6c" path="res://Scenes/Crads/card_ui.tscn" id="2_hljlh"]
 [ext_resource type="Script" path="res://Scripts/hand.gd" id="2_krp04"]
+[ext_resource type="PackedScene" uid="uid://5dkyfc51cwde" path="res://Scenes/player.tscn" id="2_sho1t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cif6y"]
 size = Vector2(1344, 448)
@@ -14,6 +15,9 @@ script = ExtResource("1_ryttj")
 color = Color(0.163107, 0.135727, 0.477279, 1)
 polygon = PackedVector2Array(0, 0, 1344, 0, 1344, 712, 0, 712)
 
+[node name="Player" parent="." instance=ExtResource("2_sho1t")]
+position = Vector2(192, 320)
+
 [node name="CardDropArea" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 0
@@ -21,6 +25,7 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CardDropArea"]
 position = Vector2(672, 224)
 shape = SubResource("RectangleShape2D_cif6y")
+debug_color = Color(0, 0.595, 0.7, 0)
 
 [node name="BattelUI" type="CanvasLayer" parent="." groups=["ui_layer"]]
 
