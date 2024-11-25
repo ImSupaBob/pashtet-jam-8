@@ -1,22 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://dyehaj5387akj"]
+[gd_scene load_steps=11 format=3 uid="uid://dyehaj5387akj"]
 
-[ext_resource type="Script" path="res://Scripts/game.gd" id="1_ryttj"]
-[ext_resource type="PackedScene" uid="uid://c0sopxmvr6s6c" path="res://Scenes/Crads/card_ui.tscn" id="2_hljlh"]
+[ext_resource type="Script" path="res://Scripts/battle.gd" id="1_op7we"]
 [ext_resource type="Script" path="res://Scripts/hand.gd" id="2_krp04"]
 [ext_resource type="PackedScene" uid="uid://5dkyfc51cwde" path="res://Scenes/player.tscn" id="2_sho1t"]
+[ext_resource type="PackedScene" uid="uid://c47ytyw5od3rj" path="res://Scenes/enemy.tscn" id="2_wq4lk"]
+[ext_resource type="Resource" uid="uid://bahidq6vswvy2" path="res://Resources/character.tres" id="3_cc8s4"]
+[ext_resource type="Resource" uid="uid://dj2l2aupdp5v" path="res://Enemy/test_enemy.tres" id="3_dfvp5"]
+[ext_resource type="PackedScene" uid="uid://cxbayoeeora8y" path="res://Scenes/UI/tooltip.tscn" id="6_4wnyq"]
+[ext_resource type="Script" path="res://Scenes/battle_ui.gd" id="6_e4xrp"]
+[ext_resource type="PackedScene" uid="uid://dvy4rcv1kflxv" path="res://Scenes/UI/mana_ui.tscn" id="6_fcenu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cif6y"]
 size = Vector2(1344, 448)
 
-[node name="Game" type="Node2D"]
-script = ExtResource("1_ryttj")
-
-[node name="Polygon2D" type="Polygon2D" parent="."]
-color = Color(0.163107, 0.135727, 0.477279, 1)
-polygon = PackedVector2Array(0, 0, 1344, 0, 1344, 712, 0, 712)
-
-[node name="Player" parent="." instance=ExtResource("2_sho1t")]
-position = Vector2(192, 320)
+[node name="Battle" type="Node2D"]
+script = ExtResource("1_op7we")
+char_stats = ExtResource("3_cc8s4")
 
 [node name="CardDropArea" type="Area2D" parent="."]
 collision_layer = 2
@@ -27,9 +26,24 @@ position = Vector2(672, 224)
 shape = SubResource("RectangleShape2D_cif6y")
 debug_color = Color(0, 0.595, 0.7, 0)
 
-[node name="BattelUI" type="CanvasLayer" parent="." groups=["ui_layer"]]
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0.196078, 0.196078, 0.67451, 1)
+polygon = PackedVector2Array(0, 0, 1344, 0, 1344, 712, 0, 712)
 
-[node name="Hand" type="HBoxContainer" parent="BattelUI"]
+[node name="Enemy" parent="." instance=ExtResource("2_wq4lk")]
+position = Vector2(1128, 336)
+stats = ExtResource("3_dfvp5")
+
+[node name="Player" parent="." instance=ExtResource("2_sho1t")]
+position = Vector2(192, 320)
+stats = ExtResource("3_cc8s4")
+
+[node name="BattleUI" type="CanvasLayer" parent="." groups=["ui_layer"]]
+script = ExtResource("6_e4xrp")
+
+[node name="Tooltip" parent="BattleUI" instance=ExtResource("6_4wnyq")]
+
+[node name="Hand" type="HBoxContainer" parent="BattleUI"]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -40,17 +54,9 @@ offset_top = -192.0
 offset_right = 262.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_constants/separation = 18
 alignment = 1
 script = ExtResource("2_krp04")
 
-[node name="CardUI" parent="BattelUI/Hand" instance=ExtResource("2_hljlh")]
-layout_mode = 2
-
-[node name="CardUI2" parent="BattelUI/Hand" instance=ExtResource("2_hljlh")]
-layout_mode = 2
-
-[node name="CardUI3" parent="BattelUI/Hand" instance=ExtResource("2_hljlh")]
-layout_mode = 2
-
-[node name="CardUI4" parent="BattelUI/Hand" instance=ExtResource("2_hljlh")]
-layout_mode = 2
+[node name="ManaUI" parent="BattleUI" instance=ExtResource("6_fcenu")]
+char_stats = ExtResource("3_cc8s4")

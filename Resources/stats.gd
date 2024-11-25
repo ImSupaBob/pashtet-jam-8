@@ -31,5 +31,4 @@ func heal(amount : int) -> void:
 func create_instance() -> Resource:
 	var instance: Stats = self.duplicate()
 	instance.health = max_health
-	instance.block = 0
 	return instance

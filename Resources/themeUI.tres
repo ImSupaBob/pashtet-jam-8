@@ -1,6 +1,7 @@
 [gd_resource type="Theme" load_steps=2 format=3 uid="uid://cuej7rydnr6f"]
 
-[ext_resource type="FontFile" uid="uid://c8lmq2f0k24a" path="res://Assets/Kenney Pixel Square.ttf" id="1_qpova"]
+[ext_resource type="FontFile" uid="uid://drfduo68u66fq" path="res://Assets/Kenney Pixel.ttf" id="1_hnaw4"]
 
 [resource]
-default_font = ExtResource("1_qpova")
+default_font = ExtResource("1_hnaw4")
+default_font_size = 32

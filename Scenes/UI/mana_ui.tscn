@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://dvy4rcv1kflxv"]
+
+[ext_resource type="Texture2D" uid="uid://chmdboafhg2tf" path="res://Assets/UI/energy.png" id="1_inshu"]
+[ext_resource type="Script" path="res://Scripts/UI/mana_ui.gd" id="2_gu4rm"]
+[ext_resource type="Theme" uid="uid://cuej7rydnr6f" path="res://Resources/themeUI.tres" id="2_qf3n5"]
+
+[node name="ManaUI" type="TextureRect"]
+custom_minimum_size = Vector2(64, 64)
+offset_left = 64.0
+offset_top = 512.0
+offset_right = 192.0
+offset_bottom = 640.0
+texture = ExtResource("1_inshu")
+script = ExtResource("2_gu4rm")
+
+[node name="ManaLabel" type="Label" parent="."]
+self_modulate = Color(0.0646965, 0.0646965, 0.0646965, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_qf3n5")
+theme_override_font_sizes/font_size = 32
+text = "3 / 3"
+horizontal_alignment = 1
+vertical_alignment = 1

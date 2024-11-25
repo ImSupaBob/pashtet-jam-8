@@ -1,12 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://c0sopxmvr6s6c"]
+[gd_scene load_steps=12 format=3 uid="uid://c0sopxmvr6s6c"]
 
 [ext_resource type="Theme" uid="uid://cuej7rydnr6f" path="res://Resources/themeUI.tres" id="1_e3rld"]
 [ext_resource type="Script" path="res://Scripts/Card/card_ui.gd" id="1_nr0eh"]
+[ext_resource type="Texture2D" uid="uid://cl53qbk5lo4dv" path="res://Assets/Card/card_border.png" id="3_31ov2"]
 [ext_resource type="Script" path="res://Scripts/Card/card_state_machine.gd" id="3_ktrjp"]
+[ext_resource type="Texture2D" uid="uid://cfafjpmmtd2m0" path="res://Assets/Card/positive_thinking.png" id="3_se4xh"]
 [ext_resource type="Script" path="res://Scripts/Card/States/card_base_state.gd" id="4_383td"]
 [ext_resource type="Script" path="res://Scripts/Card/States/card_clicked_state.gd" id="5_p3tvo"]
 [ext_resource type="Script" path="res://Scripts/Card/States/card_dragging_state.gd" id="6_w3cax"]
 [ext_resource type="Script" path="res://Scripts/Card/States/card_released_state.gd" id="7_f87fs"]
+[ext_resource type="Texture2D" uid="uid://61j1d5a48xtc" path="res://Assets/UI/energy_on_card.png" id="10_vlihm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mssbd"]
 size = Vector2(128, 192)
@@ -33,7 +36,52 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0.9, 0.144, 0.144, 1)
 
+[node name="Icon" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 192.0
+mouse_filter = 2
+texture = ExtResource("3_se4xh")
+
+[node name="Border" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 192.0
+mouse_filter = 2
+texture = ExtResource("3_31ov2")
+
+[node name="CostIcon" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+mouse_filter = 2
+texture = ExtResource("10_vlihm")
+
+[node name="Cost" type="Label" parent="CostIcon"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.5
+offset_top = -12.0
+offset_right = 8.5
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_e3rld")
+theme_override_colors/font_color = Color(0.0627451, 0.0627451, 0.0627451, 1)
+theme_override_font_sizes/font_size = 16
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="State" type="Label" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

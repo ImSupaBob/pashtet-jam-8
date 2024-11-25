@@ -8,4 +8,4 @@ extends VBoxContainer
 func update_stats(stats: Stats) -> void:
 	health_label.text = str(stats.max_health) + "  /  " + str(stats.health)
 	
-	health.visible = stats.health > 0
+	#health.visible = stats.health > 0

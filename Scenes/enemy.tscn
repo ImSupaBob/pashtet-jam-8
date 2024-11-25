@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://c47ytyw5od3rj"]
+
+[ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_48y8c"]
+[ext_resource type="Texture2D" uid="uid://b1uklbaex5gem" path="res://Assets/Enemy/the_worst_theme.png" id="1_al5wu"]
+[ext_resource type="PackedScene" uid="uid://fqcevt8o5esv" path="res://Scenes/UI/stats_ui.tscn" id="2_hcfbe"]
+[ext_resource type="Theme" uid="uid://cuej7rydnr6f" path="res://Resources/themeUI.tres" id="4_ck6n7"]
+
+[node name="Enemy" type="Node2D" groups=["Enemy"]]
+script = ExtResource("1_48y8c")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -96)
+texture = ExtResource("1_al5wu")
+
+[node name="StatsUI" parent="." instance=ExtResource("2_hcfbe")]
+offset_left = -104.0
+offset_right = 92.0
+
+[node name="Label" type="Label" parent="."]
+offset_left = -96.0
+offset_top = -216.0
+offset_right = 96.0
+offset_bottom = -192.0
+theme = ExtResource("4_ck6n7")
+text = "The Worst Theme"

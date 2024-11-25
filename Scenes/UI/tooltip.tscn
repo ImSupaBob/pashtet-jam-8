@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=3 uid="uid://cxbayoeeora8y"]
+
+[ext_resource type="Theme" uid="uid://cuej7rydnr6f" path="res://Resources/themeUI.tres" id="1_7e37d"]
+[ext_resource type="Script" path="res://Scripts/UI/tooltip.gd" id="1_j5ysr"]
+[ext_resource type="Texture2D" uid="uid://c7sibgxcmha0n" path="res://Assets/UI/tooltip_border.png" id="2_usdpm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_65t42"]
+bg_color = Color(0.694861, 0.0866976, 0.0927448, 1)
+
+[node name="Tooltip" type="PanelContainer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -222.0
+offset_top = 24.0
+offset_right = 226.0
+offset_bottom = 182.0
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_65t42")
+script = ExtResource("1_j5ysr")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="TooltipName" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("1_7e37d")
+text = "Breathing technique"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TooltipText" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("1_7e37d")
+theme_override_constants/line_separation = 2
+bbcode_enabled = true
+text = "Deal 9 damage.
+Reduce stress by 3.
+Discard all cards in hand. 
+"
+fit_content = true
+
+[node name="TooltipBorder" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_usdpm")

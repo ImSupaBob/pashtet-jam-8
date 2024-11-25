@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="Card" load_steps=2 format=3 uid="uid://cp0e4hgj0dwxj"]
+[gd_resource type="Resource" script_class="Card" load_steps=3 format=3 uid="uid://cp0e4hgj0dwxj"]
 
+[ext_resource type="Texture2D" uid="uid://bpcumq55jlc4p" path="res://Assets/Card/breathing_technique.png" id="1_i5nk7"]
 [ext_resource type="Script" path="res://Resources/card.gd" id="1_sux2r"]
 
 [resource]
@@ -8,3 +9,6 @@ id = "breathing_technique"
 type = 1
 target = 0
 cost = 1
+name = "Breathing technique"
+icon = ExtResource("1_i5nk7")
+tooltip_text = "Reduce stress by 3."

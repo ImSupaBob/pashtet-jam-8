@@ -1,10 +1,14 @@
-[gd_resource type="Resource" script_class="Card" load_steps=2 format=3 uid="uid://bvuq3fhss7y1j"]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bvuq3fhss7y1j"]
 
-[ext_resource type="Script" path="res://Resources/card.gd" id="1_iubs7"]
+[ext_resource type="Texture2D" uid="uid://cfafjpmmtd2m0" path="res://Assets/Card/positive_thinking.png" id="1_h8454"]
+[ext_resource type="Script" path="res://Cards/positive_thinking.gd" id="1_pol7n"]
 
 [resource]
-script = ExtResource("1_iubs7")
+script = ExtResource("1_pol7n")
 id = "positive_thinking"
 type = 0
 target = 1
 cost = 1
+name = "Positive thinking"
+icon = ExtResource("1_h8454")
+tooltip_text = "[center]Deal 3 damage to enemy.[/center]"
