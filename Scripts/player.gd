@@ -2,16 +2,14 @@ class_name Player
 extends Node2D
 
 @export var stats: CharacterStats : set = set_character_stats
+@export var stress_ui : StressUI
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var stats_ui: StatsUI = $StatsUI
 
-func _ready() -> void:
-	await get_tree().create_timer(2).timeout
-	take_damage(6)
 
 func set_character_stats(value: CharacterStats) -> void:
-	stats = value.create_instance()
+	stats = value
 	
 	if not stats.stats_changed.is_connected(update_stats):
 		stats.stats_changed.connect(update_stats)
@@ -30,7 +28,13 @@ func update_player() -> void:
 
 func update_stats() -> void:
 	stats_ui.update_stats(stats)
+	stress_ui.update_stats(stats)
 
+func take_stress(value : int) -> void:
+	if stats.stress >= stats.max_stress:
+		return
+	
+	stats.take_stress(value)
 
 func take_damage(damage: int) -> void:
 	if stats.health <= 0:

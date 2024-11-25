@@ -13,7 +13,7 @@ enum Target {SELF, ENEMY, EVERYONE}
 @export_group("Card Visuals")
 @export var name: String
 @export var icon: Texture
-@export_multiline var tooltip_text: String
+@export_multiline var tooltip_text: String = "[center][/center]"
 #@export var sound: AudioStream
 
 func _get_targets(targets: Array[Node]) -> Array[Node]:

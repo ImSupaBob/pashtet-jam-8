@@ -13,10 +13,16 @@ position = Vector2(0, -96)
 texture = ExtResource("1_al5wu")
 
 [node name="StatsUI" parent="." instance=ExtResource("2_hcfbe")]
-offset_left = -104.0
-offset_right = 92.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -96.0
+offset_right = 96.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
-[node name="Label" type="Label" parent="."]
+[node name="NameEnemy" type="Label" parent="."]
 offset_left = -96.0
 offset_top = -216.0
 offset_right = 96.0

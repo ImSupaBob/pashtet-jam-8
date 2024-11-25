@@ -1,12 +1,11 @@
-[gd_scene load_steps=28 format=3 uid="uid://dyehaj5387akj"]
+[gd_scene load_steps=15 format=3 uid="uid://dyehaj5387akj"]
 
 [ext_resource type="Script" path="res://Scripts/battle.gd" id="1_op7we"]
 [ext_resource type="Script" path="res://Scripts/hand.gd" id="2_krp04"]
 [ext_resource type="PackedScene" uid="uid://5dkyfc51cwde" path="res://Scenes/player.tscn" id="2_sho1t"]
 [ext_resource type="PackedScene" uid="uid://c47ytyw5od3rj" path="res://Scenes/enemy.tscn" id="2_wq4lk"]
 [ext_resource type="Resource" uid="uid://bahidq6vswvy2" path="res://Resources/character.tres" id="3_cc8s4"]
-[ext_resource type="Script" path="res://Scripts/enemy_handler.gd" id="3_wtrwp"]
-[ext_resource type="Resource" uid="uid://b5jl744e7rb4k" path="res://Enemy/the_worst_theme.tres" id="4_13f4u"]
+[ext_resource type="Resource" uid="uid://dj2l2aupdp5v" path="res://Enemy/test_enemy.tres" id="3_dfvp5"]
 [ext_resource type="Script" path="res://Scripts/player_handler.gd" id="6_3oxxc"]
 [ext_resource type="PackedScene" uid="uid://cxbayoeeora8y" path="res://Scenes/UI/tooltip.tscn" id="6_4wnyq"]
 [ext_resource type="Script" path="res://Scenes/battle_ui.gd" id="6_e4xrp"]
@@ -14,32 +13,9 @@
 [ext_resource type="Theme" uid="uid://cuej7rydnr6f" path="res://Resources/themeUI.tres" id="11_7ylcu"]
 [ext_resource type="Script" path="res://Scripts/UI/end_turn_rect.gd" id="11_ogdap"]
 [ext_resource type="Texture2D" uid="uid://cvtd4x4rku1dv" path="res://Assets/UI/end_turn_border.png" id="13_u25wx"]
-[ext_resource type="PackedScene" uid="uid://dy5xqk0cctx08" path="res://Scenes/UI/stress_ui.tscn" id="14_0fox8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cif6y"]
 size = Vector2(1344, 448)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tjmta"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3sm5t"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nvkp4"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qsymy"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nps56"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h5ruu"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v5f27"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_28p5f"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xdk0w"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_le8om"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kvytx"]
 
 [node name="Battle" type="Node2D"]
 script = ExtResource("1_op7we")
@@ -58,17 +34,13 @@ debug_color = Color(0, 0.595, 0.7, 0)
 color = Color(0.196078, 0.196078, 0.67451, 1)
 polygon = PackedVector2Array(0, 0, 1344, 0, 1344, 712, 0, 712)
 
-[node name="EnemyHandler" type="Node2D" parent="."]
-script = ExtResource("3_wtrwp")
-
-[node name="Enemy" parent="EnemyHandler" instance=ExtResource("2_wq4lk")]
+[node name="Enemy" parent="." instance=ExtResource("2_wq4lk")]
 position = Vector2(1128, 336)
-stats = ExtResource("4_13f4u")
+stats = ExtResource("3_dfvp5")
 
-[node name="Player" parent="." node_paths=PackedStringArray("stress_ui") instance=ExtResource("2_sho1t")]
+[node name="Player" parent="." instance=ExtResource("2_sho1t")]
 position = Vector2(192, 320)
 stats = ExtResource("3_cc8s4")
-stress_ui = NodePath("../BattleUI/StressUI")
 
 [node name="PlayerHandler" type="Node" parent="." node_paths=PackedStringArray("hand")]
 script = ExtResource("6_3oxxc")
@@ -78,8 +50,6 @@ hand = NodePath("../BattleUI/Hand")
 script = ExtResource("6_e4xrp")
 
 [node name="Tooltip" parent="BattleUI" instance=ExtResource("6_4wnyq")]
-offset_top = 84.0
-offset_bottom = 242.0
 
 [node name="Hand" type="HBoxContainer" parent="BattleUI"]
 anchors_preset = 7
@@ -104,7 +74,6 @@ offset_left = 1184.0
 offset_top = 616.0
 offset_right = 1312.0
 offset_bottom = 680.0
-mouse_filter = 2
 color = Color(0.694118, 0.0862745, 0.0941176, 1)
 script = ExtResource("11_ogdap")
 
@@ -117,37 +86,13 @@ mouse_default_cursor_shape = 2
 theme = ExtResource("11_7ylcu")
 theme_type_variation = &"FlatButton"
 theme_override_font_sizes/font_size = 32
-theme_override_styles/focus = SubResource("StyleBoxEmpty_tjmta")
-theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_3sm5t")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_nvkp4")
-theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_qsymy")
-theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_nps56")
-theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_h5ruu")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_v5f27")
-theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_28p5f")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_xdk0w")
-theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_le8om")
-theme_override_styles/normal = SubResource("StyleBoxEmpty_kvytx")
 text = "End turn"
 
 [node name="EndTurnBorder" type="TextureRect" parent="BattleUI/EndTurnRect"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-mouse_filter = 2
 texture = ExtResource("13_u25wx")
-
-[node name="StressUI" parent="BattleUI" instance=ExtResource("14_0fox8")]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -160.0
-offset_top = 8.0
-offset_right = 161.0
-offset_bottom = 72.0
-grow_horizontal = 2
 
 [connection signal="button_down" from="BattleUI/EndTurnRect/EndTurnButton" to="BattleUI/EndTurnRect" method="_on_end_turn_button_button_down"]
 [connection signal="button_up" from="BattleUI/EndTurnRect/EndTurnButton" to="BattleUI/EndTurnRect" method="_on_end_turn_button_button_up"]
-[connection signal="mouse_entered" from="BattleUI/EndTurnRect/EndTurnButton" to="BattleUI/EndTurnRect" method="_on_end_turn_button_mouse_entered"]
-[connection signal="mouse_exited" from="BattleUI/EndTurnRect/EndTurnButton" to="BattleUI/EndTurnRect" method="_on_end_turn_button_mouse_exited"]

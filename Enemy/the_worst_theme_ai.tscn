@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dp1i2ttw72dmn"]
+
+[ext_resource type="Script" path="res://Scripts/enemy_action_piker.gd" id="1_83q7i"]
+[ext_resource type="Script" path="res://Enemy/the_worst_theme_attack.gd" id="2_psc1i"]
+
+[node name="TheWorstThemeAI" type="Node"]
+script = ExtResource("1_83q7i")
+
+[node name="TheWorstThemeAttack" type="Node" parent="."]
+script = ExtResource("2_psc1i")
+stress = 3
+type = 1
+chance_weight = 10.0

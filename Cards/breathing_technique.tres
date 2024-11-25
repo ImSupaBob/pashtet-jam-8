@@ -11,4 +11,4 @@ target = 0
 cost = 1
 name = "Breathing technique"
 icon = ExtResource("1_i5nk7")
-tooltip_text = "Reduce stress by 3."
+tooltip_text = "[center]Reduce stress by 3.[/center]"

@@ -1,46 +1,67 @@
-[gd_scene load_steps=6 format=3 uid="uid://dy5xqk0cctx08"]
+[gd_scene load_steps=8 format=3 uid="uid://dy5xqk0cctx08"]
 
 [ext_resource type="Texture2D" uid="uid://c1kxxex56orob" path="res://Assets/UI/Stress.png" id="1_1l3yh"]
 [ext_resource type="Script" path="res://Scripts/UI/stress_ui.gd" id="1_756oq"]
 [ext_resource type="Theme" uid="uid://cuej7rydnr6f" path="res://Resources/themeUI.tres" id="2_lgdol"]
 [ext_resource type="StyleBox" uid="uid://dbsfaq4q3y2om" path="res://Resources/stress_progress_bar.tres" id="3_lfsbt"]
+[ext_resource type="Texture2D" uid="uid://duqq3arbnassi" path="res://Assets/UI/stress_border.png" id="5_3fnf1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cmt8y"]
+bg_color = Color(0.694118, 0.0862745, 0.0941176, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3g0fx"]
 
-[node name="StressUI" type="HBoxContainer"]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -224.0
-offset_right = 224.0
+[node name="StressUI" type="PanelContainer"]
+offset_right = 321.0
 offset_bottom = 64.0
-grow_horizontal = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_cmt8y")
 script = ExtResource("1_756oq")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("1_1l3yh")
 stretch_mode = 2
 
-[node name="TextureRect2" type="ColorRect" parent="."]
-custom_minimum_size = Vector2(380, 32)
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme = ExtResource("2_lgdol")
-color = Color(0.0177324, 0.0177324, 0.0177324, 1)
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 6
 
-[node name="StressProgressBar" type="ProgressBar" parent="TextureRect2"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(380, 32)
-layout_mode = 1
-offset_right = 380.0
-offset_bottom = 32.0
+[node name="StressProgressBar" type="ProgressBar" parent="HBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(245, 32)
+layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("2_lgdol")
 theme_override_styles/background = SubResource("StyleBoxEmpty_3g0fx")
 theme_override_styles/fill = ExtResource("3_lfsbt")
-min_value = -60.0
-max_value = 60.0
+min_value = -15.0
+max_value = 15.0
 show_percentage = false
+
+[node name="StressLable" type="Label" parent="HBoxContainer/MarginContainer/StressProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -12.0
+offset_right = 20.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_lgdol")
+text = "0/15"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("5_3fnf1")
